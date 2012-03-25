@@ -6,3 +6,4 @@ if [ $# -ne 1 ]; then
 fi
 
 git remote add origin git@github.com:ksss/$1.git
+git push -u origin master
