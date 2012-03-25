@@ -86,14 +86,14 @@ nmap <C-l> :<C-u>call append(expand('.'), '')<Cr>
 " 画面分割した方に
 nmap <C-w>v <C-w>v<C-w><C-w>
 " タブ番号へ
-nmap g1 :tabn1<CR>
-nmap g2 :tabn2<CR>
-nmap g3 :tabn3<CR>
-nmap g4 :tabn4<CR>
-nmap g5 :tabn5<CR>
-nmap g6 :tabn6<CR>
-nmap g7 :tabn7<CR>
-nmap g8 :tabn8<CR>
+nmap g1 1gt<ESC>
+nmap g2 2gt<ESC>
+nmap g3 3gt<ESC>
+nmap g4 4gt<ESC>
+nmap g5 5gt<ESC>
+nmap g6 6gt<ESC>
+nmap g7 7gt<ESC>
+nmap g8 8gt<ESC>
 
 " コマンド
 command! Reloadvimrc source ~/.vimrc  " vimrcリロード

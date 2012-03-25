@@ -5,14 +5,13 @@ if [ ! -d ~/dotfiles/ ]; then
 	git clone git@github.com:ksss/dotfiles.git ~/dotfiles/
 fi
 
-function link(){
+function links () {
 	ln -ivs $1 $2
 }
 
-link ~/dotfiles/.vimrc ~/.vimrc
-link ~/dotfiles/.screenrc ~/.screenrc
-link ~/dotfiles/.bashrc ~/.bashrc
-link ~/dotfiles/.zshrc ~/.zshrc
-link ~/dotfiles/.vim ~/.vim
-link ~/dotfiles/bin ~/bin
-
+links ~/dotfiles/.vimrc ~/.vimrc
+links ~/dotfiles/.screenrc ~/.screenrc
+links ~/dotfiles/.bashrc ~/.bashrc
+links ~/dotfiles/.zshrc ~/.zshrc
+links ~/dotfiles/.vim ~/.vim
+links ~/dotfiles/bin ~/bin
