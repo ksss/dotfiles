@@ -1,0 +1,8 @@
+#! /bin/sh
+
+if [ $# -ne 1 ]; then
+	echo set to commit repository name!
+	exit 1
+fi
+
+git remote add origin git@github.com:ksss/$1.git

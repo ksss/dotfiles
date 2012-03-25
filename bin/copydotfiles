@@ -1,0 +1,21 @@
+#! /bin/sh
+
+CURRENT=`pwd`
+
+if [ $# -ne 1 ]; then
+	echo "input target dir"
+	exit 1
+fi
+
+if [ ! -d $1 ]; then
+	mkdir $1
+fi
+
+cd $1
+cp -r ~/bin/ bin/
+cp -r ~/.vim/ .vim/
+cp ~/.bashrc .
+cp ~/.zshrc .
+cp ~/.screenrc .
+cp ~/.vimrc .
+cd $CURRENT

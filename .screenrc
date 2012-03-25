@@ -1,0 +1,34 @@
+# 文字コード
+defkanji utf-8
+defencoding utf-8
+encoding utf-8 utf-8
+
+# 背景描画
+defbce "on"
+# vimとかlessで画面をもどす
+altscreen on
+
+# startメッセージ
+startup_message off
+
+# エラー時の点滅
+vbell off
+
+# 256色
+term xterm-256color
+
+# メッセージ表示時間
+msgwait 3
+
+# メッセージ待ち時間
+msgminwait 1
+
+# スクロールバッファ
+defscrollback 5000
+
+# info
+termcapinfo xterm* 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
+termcapinfo xterm* ti@:te@
+# ステータスバー
+hardstatus on
+hardstatus alwayslastline "%{.Kw}[%02c] %-w %{.wk}%{!}%n %f%t%{.Kw} %+w %=  %0`"
