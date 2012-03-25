@@ -1,0 +1,2 @@
+wget http://github.com/ksss/dotfiles/raw/master/setup.sh
+sh setup.sh
