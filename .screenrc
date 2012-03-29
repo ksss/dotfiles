@@ -18,7 +18,7 @@ vbell off
 term xterm-256color
 
 # メッセージ表示時間
-msgwait 3
+msgwait 2
 
 # メッセージ待ち時間
 msgminwait 1

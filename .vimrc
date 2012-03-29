@@ -13,11 +13,13 @@ if &term =~ "xterm-256color" " 256色
 	hi CursorLine cterm=none ctermbg=237
 	hi PreProc ctermfg=88
 	hi Constant ctermfg=210
+	hi Normal ctermfg=15
+	hi Search ctermfg=15
+	hi LineNr ctermfg=3
+"	hi ModeMsg 
 else                         " 16色
 	colorscheme desert
 endif
-hi Normal ctermfg=15
-hi Search ctermfg=15
 
 if has('gui_running')  " guiなら
 	set guioptions+=b    " 横バー
@@ -32,7 +34,7 @@ set listchars=tab:>.             " Tab表記
 set whichwrap=b,s,h,l,<,>,[,]    " カーソルを行端で止めない
 set laststatus=2                 " ステータスバー表示
 set statusline=%F%m%r%h%w:\ %p%%\ %y  "   フルパスファイル名と%
-set nofoldenable                 " 最初は折りたたまない
+set foldenable                   " 最初の折りたたみ
 set foldmethod=marker            " {{{ }}} で折りたたみ
 set backspace=indent,eol,start   " BSで消せるもの
 set number                       " 行番号を表示する
@@ -50,7 +52,6 @@ set nowrap                       " 折り返さない
 set cursorline                 " カーソル行をハイライト
 set vb t_vb=                   " ビープ音を消す
 set ruler
-set showcmd
 
 " インデント
 " default
@@ -68,11 +69,22 @@ au BufRead,BufNewFile */fwrs/* setlocal ts=4 sw=4 sts=4 noexpandtab fileformat=u
 " 自動ディレクトリ移動
 au BufEnter * execute ":lcd " . expand("%:p:h")
 
+
 " オートコマンド
 augroup MyAutocmd
 	au!
+	" 失敗した時だけechoする
+	function! s:phplint()
+		let ret = system(printf("php -l %s", expand('%')))
+		if ret !~ '^No.*'
+			echomsg ret
+		endif
+	endfunction
+
 	" PHP保存した時にlint
-	au BufWritePost * if &filetype == "php" | exe "!php -l %" | endif
+	au BufWritePost * if &filetype == "php" | call s:phplint() | endif
+	" 自動でchmod +x
+	au BufWritePost * if getline(1) =~ "^#!" | exe "silent !chmod +x %" | endif
 augroup END
 
 " ノーマルモードマップ
@@ -96,7 +108,10 @@ nmap g7 7gt<ESC>
 nmap g8 8gt<ESC>
 
 " コマンド
-command! Reloadvimrc source ~/.vimrc  " vimrcリロード
+" vimrcリロード
+command! Reloadvimrc source ~/.vimrc
+" svn ショートカット 
+command! -nargs=0 Diff exe "!svn diff % | less"
 
 " typoなおし
 iabbr funcrion function
