@@ -1,3 +1,5 @@
+escape ^tt
+
 # 文字コード
 defkanji utf-8
 defencoding utf-8
@@ -18,7 +20,7 @@ vbell off
 term xterm-256color
 
 # メッセージ表示時間
-msgwait 2
+msgwait 4
 
 # メッセージ待ち時間
 msgminwait 1

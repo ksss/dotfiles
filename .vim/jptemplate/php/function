@@ -1,0 +1,11 @@
+// {{{ public function ${name} ()
+/**
+ * 
+ * @params
+ * @return
+ */
+public function ${name} () {
+	${cursor}
+	return
+}
+// }}}

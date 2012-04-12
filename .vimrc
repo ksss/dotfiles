@@ -1,17 +1,18 @@
 syntax on
 filetype plugin indent on
-
 call pathogen#runtime_append_all_bundles() " ~/.vim/bundle 全部読む
+
+let g:jpTemplateKey = '<C-B>'
 
 if &term =~ "xterm-256color" " 256色
 	colorscheme desert256
-	" desert256 調整
+	" desert256 調整 +-36
 	highlight SpecialKey ctermfg=244
 	hi StatusLineNC ctermbg=246 ctermfg=236
 	hi Folded ctermfg=249
 	hi Pmenu ctermbg=236
 	hi CursorLine cterm=none ctermbg=237
-	hi PreProc ctermfg=88
+	hi PreProc ctermfg=124
 	hi Constant ctermfg=210
 	hi Normal ctermfg=15
 	hi Search ctermfg=15
@@ -53,9 +54,10 @@ set showcmd                      " 入力中のコマンド表示
 set showmatch                    " 対応する括弧の表示
 set nowrap                       " 折り返さない
 " set autoindent
-set cursorline                 " カーソル行をハイライト
-set vb t_vb=                   " ビープ音を消す
+set cursorline                   " カーソル行をハイライト
+set vb t_vb=                     " ビープ音を消す
 set ruler
+set autochdir                    " 自動ディレクトリ移動
 
 " インデント
 " default
@@ -68,28 +70,50 @@ autocmd BufRead,BufNewFile *.phtml setlocal filetype=php
 " filetypeごと
 au filetype php setlocal tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab
 au filetype javascript setlocal ts=4 sw=4 tw=0 noexpandtab
+au filetype coffee setlocal ts=2 sw=2 tw=0 expandtab
 " 開発環境下
 au BufRead,BufNewFile */fwrs/* setlocal ts=4 sw=4 sts=4 noexpandtab fileformat=unix
-" 自動ディレクトリ移動
-au BufEnter * execute ":lcd " . expand("%:p:h")
-
 
 " オートコマンド
 augroup MyAutocmd
 	au!
 	" 失敗した時だけechoする
 	function! s:phplint()
-		let ret = system(printf("php -l %s", expand('%')))
-		if ret !~ '^No.*'
-			echomsg ret
+		if &filetype == 'php'
+			let ret = system(printf("php -l %s", expand('%')))
+			if ret !~ '^No.*'
+				echo ret
+			endif
 		endif
 	endfunction
 
 	" PHP保存した時にlint
-	au BufWritePost * if &filetype == "php" | call s:phplint() | endif
+	au BufWritePost * call s:phplint()
 	" 自動でchmod +x
 	au BufWritePost * if getline(1) =~ "^#!" | exe "silent !chmod +x %" | endif
 augroup END
+
+" {{{ Autocompletion using the TAB key
+
+" This function determines, wether we are on the start of the line text (then tab indents) or
+" if we want to try autocompletion
+function! InsertTabWrapper()
+	let col = col('.') - 1
+	if !col || getline('.')[col - 1] !~ '\k'
+		return "\<TAB>"
+	else
+		if pumvisible()
+			return "\<C-N>"
+		else
+			return
+			"\<C-N>\<C-P>"
+		end
+	endif
+endfunction
+" Remap the tab key to select action with InsertTabWrapper
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+
+" }}} Autocompletion using the TAB key
 
 " ノーマルモードマップ
 " タブ移動
@@ -101,22 +125,18 @@ nmap <ESC><ESC> :nohlsearch<CR><ESC>
 nmap <C-l> :<C-u>call append(expand('.'), '')<CR>
 " 画面分割した方に
 nmap <C-w>v <C-w>v<C-w><C-w>
-" タブ番号へ
-nmap g1 1gt<ESC>
-nmap g2 2gt<ESC>
-nmap g3 3gt<ESC>
-nmap g4 4gt<ESC>
-nmap g5 5gt<ESC>
-nmap g6 6gt<ESC>
-nmap g7 7gt<ESC>
-nmap g8 8gt<ESC>
+" g?でタブ番号へ
+for i in range (1, 8)
+	exec 'nmap g' . i . ' ' . i . 'gt<ESC>'
+endfor
 
 " コマンド
 " vimrcリロード
 command! Reloadvimrc source ~/.vimrc
-" svn ショートカット
-command! -nargs=0 Diff exe "!svn diff % | less"
+
+" svn diffショートカット
+command! -nargs=0 Svndiff echo system(printf("svn diff %s", expand('%')))
 
 " typoなおし
 iabbr funcrion function
-iabbr fucntion function
+iabbr functoin function

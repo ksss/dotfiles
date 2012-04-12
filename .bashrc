@@ -7,3 +7,6 @@ alias nn='echo \-e "\n\n\n\n\n"'
 function phpl() {
 	find $1 \( -name "*.php" -or -name "*.phtml" \) -exec php -l {} \;
 }
+function tagr() {
+	tail -f $1 | grep --color $2
+}
