@@ -1,11 +1,10 @@
 // {{{ public function ${name} ()
 /**
- * 
+ * ${cursor}
  * @params
  * @return
  */
 public function ${name} () {
-	${cursor}
-	return
+	return $this;
 }
 // }}}

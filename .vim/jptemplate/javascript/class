@@ -1,0 +1,9 @@
+(function () {
+	var ${name} = function () {
+		return this.init(arguments);
+	};
+	${name}.prototype.init = function () {
+		return this;
+	};
+	this.${name} = ${name};
+}).call(this);
