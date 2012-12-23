@@ -8,6 +8,11 @@ let g:jpTemplateKey = '<C-B>'
 " debuggerの使用ポート
 let g:debuggerPort = 20016
 
+" php syntax
+let php_special_vars = 0
+let php_special_functions = 0
+let php_alt_comparisons = 0
+
 if &term =~ "xterm-256color" " 256色
 	colorscheme desert256
 	" desert256 調整 +-36
@@ -63,7 +68,6 @@ set ruler
 set autochdir                    " 自動ディレクトリ移動
 set wildmenu                     " 補完候補表示する
 
-
 " インデント
 " default
 set tabstop=4
@@ -103,6 +107,16 @@ augroup MyAutocmd
 augroup END
 " }}}
 
+function! Httpdrestart()
+	let ret = system("sudo /etc/init.d/httpd configtest")
+	if ret !~ '.*Syntax OK.*'
+		echo ret
+	else
+		echo system("sudo /etc/init.d/httpd restart")
+	endif
+endfunction
+command! -nargs=0 Httpdrestart call Httpdrestart()<CR>
+
 " {{{ セルフ実行
 function! ShebangExecute()
 	let m = matchlist(getline(1), '#!\(.*\)')
@@ -116,6 +130,7 @@ nmap ,e :call ShebangExecute()<CR>
 " }}}
 
 " {{{ Autocompletion using the TAB key
+
 " This function determines, wether we are on the start of the line text (then tab indents) or
 " if we want to try autocompletion
 function! InsertTabWrapper()
@@ -133,6 +148,7 @@ function! InsertTabWrapper()
 endfunction
 " Remap the tab key to select action with InsertTabWrapper
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+
 " }}} Autocompletion using the TAB key
 
 " {{{ MyTabLine() show tabpage num
@@ -211,3 +227,4 @@ command! Reloadvimrc source ~/.vimrc
 
 " svn diffショートカット
 command! -nargs=0 Svndiff echo system(printf("svn diff %s", expand('%')))
+command! -nargs=0 Mysqlexec echo system(printf("\./%s | mysql -u root", expand('%')))
