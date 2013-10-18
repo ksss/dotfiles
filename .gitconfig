@@ -3,6 +3,7 @@
 	c = checkout
 	b = branch
 	l = log
+	tree = log --graph --pretty=oneline --abbrev-commit --decorate
 [color]
 	ui = true
 [branch]

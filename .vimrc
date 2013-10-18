@@ -74,6 +74,11 @@ set tabstop=4
 set shiftwidth=4
 set noexpandtab
 
+" バックアップ
+set backup
+set backupdir=$HOME/.vim-backup
+let &directory = &backupdir
+
 " {{{ オートコマンド
 augroup MyAutocmd
 	autocmd!
