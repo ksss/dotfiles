@@ -5,9 +5,6 @@ call pathogen#runtime_append_all_bundles() " ~/.vim/bundle 全部読む
 " jpTemplateの起動キー
 let g:jpTemplateKey = '<C-B>'
 
-" debuggerの使用ポート
-let g:debuggerPort = 20016
-
 " php syntax
 let php_special_vars = 0
 let php_special_functions = 0
@@ -15,17 +12,18 @@ let php_alt_comparisons = 0
 
 if &term =~ "xterm-256color" " 256色
 	colorscheme desert256
+	" set t_Co=256
 	" desert256 調整 +-36
 	highlight SpecialKey ctermfg=238
 	hi StatusLineNC ctermbg=246 ctermfg=236
 	hi Folded ctermfg=253
 	hi Pmenu ctermbg=236
+	hi PmenuSel ctermbg=253 ctermfg=236
 	hi CursorLine cterm=none ctermbg=236
 	hi Constant ctermfg=210
 	hi Normal ctermfg=15
 	hi Search ctermfg=15
 	hi LineNr ctermfg=3
-"	hi ModeMsg
 else                         " 16色
 	colorscheme desert
 endif
@@ -38,6 +36,7 @@ if has('gui_running')  " guiなら
 else                   " cuiなら
 endif
 
+set nocompatible                 " vi互換モードoff(最初にやる)
 set termencoding=utf-8
 set encoding=utf-8
 set fileencoding=utf-8           " char cord
@@ -67,6 +66,7 @@ set vb t_vb=                     " ビープ音を消す
 set ruler
 set autochdir                    " 自動ディレクトリ移動
 set wildmenu                     " 補完候補表示する
+set hlsearch                     " 検索した時にハイライト
 
 " インデント
 " default
@@ -83,12 +83,9 @@ augroup MyAutocmd
 
 	" filetypeごと
 	" au filetype php setlocal tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab
-	au filetype javascript setlocal ts=4 sw=4 tw=0 noexpandtab
+	au filetype javascript setlocal ts=2 sw=2 expandtab
 	au filetype coffee setlocal ts=2 sw=2 tw=0 expandtab
 	au filetype ruby setlocal ts=2 sw=2 expandtab
-
-	" 開発環境下
-	" au BufRead,BufNewFile */fwrs/* setlocal ts=4 sw=4 sts=4 noexpandtab fileformat=unix
 
 	" 失敗した時だけechoする
 	function! s:phplint()
@@ -119,6 +116,7 @@ command! -nargs=0 Httpdrestart call Httpdrestart()<CR>
 
 " {{{ セルフ実行
 function! ShebangExecute()
+	exe "silent write"
 	let m = matchlist(getline(1), '#!\(.*\)')
 	if (len(m) > 2)
 		echo system(printf('%s %s', m[1], expand('%')))
@@ -129,30 +127,8 @@ endfunction
 nmap ,e :call ShebangExecute()<CR>
 " }}}
 
-" {{{ Autocompletion using the TAB key
-
-" This function determines, wether we are on the start of the line text (then tab indents) or
-" if we want to try autocompletion
-function! InsertTabWrapper()
-	let col = col('.') - 1
-	if !col || getline('.')[col - 1] !~ '\k'
-		return "\<TAB>"
-	else
-		if pumvisible()
-			return "\<C-N>"
-		else
-			return
-			"\<C-N>\<C-P>"
-		end
-	endif
-endfunction
-" Remap the tab key to select action with InsertTabWrapper
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-
-" }}} Autocompletion using the TAB key
-
-" {{{ MyTabLine() show tabpage num
-function! MyTabLine()
+" {{{ TabLine() show tabpage num
+function! TabLine()
 	let label = ''
 	let t = tabpagenr()
 	let i = 1
@@ -165,12 +141,14 @@ function! MyTabLine()
 		" append tab number
 		let label .= '%' . i . 'T'
 		let label .= (i == t ? '%1*' : '%2*')
-		let label .= (i == t ? '%#LineNr#' . ' ' . pn : '%#TabLine#' . ' ' . pn)
+		let label .= (i == t ? '%#LineNr#' . ' ' : '%#TabLine#' . ' ')
+		" let label .= (i == t ? '%#LineNr#' . ' ' . pn : '%#TabLine#' . ' ' . pn)
 		let label .= (i == t ? '%#TabLineSel#' : '%#TabLine#')
 		let file = bufname(buflist[winnr - 1])
 		let file = fnamemodify(file, ':p:t')
 		" Add '+' if one of the buffers in the tab page is modified
-		let label .= ':' . (i == t ? '%#NonText#' : '%#TabLine#')
+		let label .= (i == t ? '%#NonText#' : '%#TabLine#')
+		" let label .= ':' . (i == t ? '%#NonText#' : '%#TabLine#')
 		if file == ''
 			let file = '[No Name]'
 		endif
@@ -189,7 +167,7 @@ function! MyTabLine()
 endfunction
 if exists("+showtabline")
 	set stal=2
-	set tabline=%!MyTabLine()
+	set tabline=%!TabLine()
 endif
 " }}}
 
@@ -204,27 +182,20 @@ command! -nargs=0 OpenAppModels call OpenAppModels()
 "}}}
 
 " ノーマルモードマップ
-" タブ移動
-" nnoremap <C-tab> gt
-" nmap <C-S-tab> gT
 " ESCの2回押しでハイライト消去
 nmap <ESC><ESC> :nohlsearch<CR><ESC>
 " 空行挿入
 nmap <C-l> :<C-u>call append(expand('.'), '')<CR>
 " 画面分割した方に
-" nmap <C-w>v <C-w>v<C-w><C-w>
 
 nmap bb :ls<cr>:buffer
 
-" g?でタブ番号へ
-for i in range (1, 8)
-	exec 'nmap g' . i . ' ' . i . 'gt<ESC>'
-endfor
+" 補完
+inoremap ' ''<LEFT>
+inoremap " ""<LEFT>
 
 " コマンド
-" vimrcリロード
 command! Reloadvimrc source ~/.vimrc
-
-" svn diffショートカット
 command! -nargs=0 Svndiff echo system(printf("svn diff %s", expand('%')))
+command! -nargs=0 Gitdiff echo system(printf("git diff %s", expand('%')))
 command! -nargs=0 Mysqlexec echo system(printf("\./%s | mysql -u root", expand('%')))

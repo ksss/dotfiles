@@ -1,0 +1,12 @@
+[alias]
+	s = status
+	c = checkout
+	b = branch
+	l = log
+[color]
+	ui = true
+[branch]
+	autosetuprebase = always
+[user]
+	name = ksss
+	email = co000ri@gmail.com

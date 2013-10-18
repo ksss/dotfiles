@@ -1,1 +1,0 @@
-echo '<pre>'; var_dump(${cursor}); echo '</pre>'; exit;

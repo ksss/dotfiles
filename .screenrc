@@ -1,6 +1,7 @@
 escape ^tt
 
 # 256色
+defbce "on"
 term xterm-256color
 
 # info

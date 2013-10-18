@@ -1,12 +1,35 @@
+path=(
+	$HOME/.rbenv/bin
+	$HOME/.rbenv/shims
+	/opt/local/bin
+	/opt/local/sbin
+	/usr/local/heroku/bin
+	/usr/local/mysql/bin
+	/usr/bin
+	/usr/sbin
+	/bin
+	/sbin
+)
+
+NODE_PATH=/opt/local/lib/node_modules/
+ANDROID_NDK_ROOT=$HOME/lib/android-ndk-r8e
+ANDROID_SDK_ROOT=$HOME/lib/adt-bundle-mac-x86_64-20130729/sdk
+
 [ -f "$HOME/.bash_profile" ] && source "$HOME/.bash_profile"
 [ -f "$HOME/.zshrc.mine" ] && source "$HOME/.zshrc.mine"
+[ -f "$HOME/.zshrc.argumets" ] && source "$HOME/.zshrc.argumets"
+
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
-SAVEHIST=10000
+SAVEHIST=1000000
+
+typeset -U fpath
+fpath=($fpath $HOME/.zsh)
 
 autoload -U compinit
 compinit
+
 
 bindkey '^R' history-incremental-pattern-search-backward
 bindkey '^S' history-incremental-pattern-search-forward

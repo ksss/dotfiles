@@ -5,7 +5,12 @@ alias ll='ls -la'
 alias lm='ls -altr'
 alias vgrep='grep -v'
 alias nn='echo \-e "\n\n\n\n\n"'
+alias rm='rm -i'
 
 if [ -f ~/.privaterc ]; then
     source ~/.privaterc
 fi
+
+function color() {
+	sed -e "s/${1}/^[[32m${1}^[[m/"
+}
