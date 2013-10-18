@@ -5,6 +5,10 @@ if [ ! -d ~/dotfiles/ ]; then
 	git clone https://github.com/ksss/dotfiles.git ~/dotfiles/
 fi
 
+if [ ! -d ~/.vim-backup/ ]; then
+	mkdir ~/.vim-backup/
+fi
+
 function links () {
 	ln -ivs $1 $2
 }
