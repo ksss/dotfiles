@@ -54,6 +54,12 @@ setopt magic_equal_subst   # "val=expr" でファイル名展開
 
 unset PS1 # bashのやつクリア
 
+if [[ -n $SSH_CONNECTION ]];then
+	PROMPT_LEFT="%{[31m%}$LOGNAME@$HOSTNAME"
+else
+	PROMPT_LEFT="%{[32m%}$USER"
+fi
+
 PROMPT="
-%{[31m%}$USER@$HOSTNAME%} %{[33m%}%~%{[m%}
+$PROMPT_LEFT %{[33m%}%~%{[m%}
 $ "
