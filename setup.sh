@@ -13,5 +13,7 @@ links ~/dotfiles/.vimrc ~/.vimrc
 links ~/dotfiles/.screenrc ~/.screenrc
 links ~/dotfiles/.bashrc ~/.bashrc
 links ~/dotfiles/.zshrc ~/.zshrc
+links ~/dotfiles/.gitconfig ~/.gitconfig
+links ~/dotfiles/.gitignore ~/.gitignore
 links ~/dotfiles/.vim ~/.vim
 links ~/dotfiles/bin ~/bin
