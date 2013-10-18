@@ -2,7 +2,7 @@
 
 if [ ! -d ~/dotfiles/ ]; then
 	mkdir ~/dotfiles/
-	git clone git@github.com:ksss/dotfiles.git ~/dotfiles/
+	git clone https://github.com/ksss/dotfiles.git ~/dotfiles/
 fi
 
 function links () {
