@@ -1,0 +1,11 @@
+// {{{ static public function ${name} ()
+/**
+ * ${cursor}
+ * @params
+ * @return
+ */
+static public function ${name} ()
+{
+	return $this;
+}
+// }}}

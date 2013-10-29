@@ -11,3 +11,5 @@
 [user]
 	name = ksss
 	email = co000ri@gmail.com
+[core]
+	editor = vim

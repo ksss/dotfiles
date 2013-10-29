@@ -1,10 +1,12 @@
 path=(
 	$HOME/.rbenv/bin
 	$HOME/.rbenv/shims
+	$HOME/bin
 	/opt/local/bin
 	/opt/local/sbin
 	/usr/local/heroku/bin
 	/usr/local/mysql/bin
+	/usr/local/bin
 	/usr/bin
 	/usr/sbin
 	/bin
@@ -30,6 +32,20 @@ fpath=($fpath $HOME/.zsh)
 autoload -U compinit
 compinit
 
+alias ..='cd ..'
+alias ...='cd ../../'
+alias vi='vim'
+alias ll='ls -la'
+alias lm='ls -altr'
+alias vgrep='grep -v'
+alias nn='echo \-e "\n\n\n\n\n"'
+alias rm='rm -i'
+
+# typo
+alias ks='ls'
+alias sl='ls'
+alias l='ls'
+alias dc='cd'
 
 bindkey '^R' history-incremental-pattern-search-backward
 bindkey '^S' history-incremental-pattern-search-forward
@@ -63,3 +79,7 @@ fi
 PROMPT="
 $PROMPT_LEFT %{[33m%}%~%{[m%}
 $ "
+
+if [[ -d "$HOME/.rbenv" ]]; then
+	eval "$(rbenv init -)"
+fi

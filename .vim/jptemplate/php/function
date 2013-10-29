@@ -4,7 +4,8 @@
  * @params
  * @return
  */
-public function ${name} () {
+public function ${name} ()
+{
 	return $this;
 }
 // }}}
