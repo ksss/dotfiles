@@ -3,6 +3,7 @@ path=(
 	$HOME/.rbenv/shims
 	$HOME/bin
 	$HOME/hbin
+	$HOME/perl5/bin
 	/opt/local/bin
 	/opt/local/sbin
 	/usr/local/heroku/bin
