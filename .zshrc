@@ -2,6 +2,7 @@ path=(
 	$HOME/.rbenv/bin
 	$HOME/.rbenv/shims
 	$HOME/bin
+	$HOME/hbin
 	/opt/local/bin
 	/opt/local/sbin
 	/usr/local/heroku/bin
@@ -58,17 +59,32 @@ setopt print_eight_bit     #  日本語対応
 setopt auto_remove_slash   # 接尾語を削除
 setopt auto_param_keys     # 変数名補完
 setopt hist_ignore_space   # 先頭のスペース無視
-# setopt prompt_subst       # プロンプト内で変数展開
 setopt pushd_ignore_dups  # 重複するディレクトリを無視
 setopt extended_glob       # "#", "~", "^" を正規表現として扱う
 setopt list_types          # ファイル種別を表す記号を末尾に表示
 setopt no_beep             # ベルを鳴らさない
 setopt always_last_prompt  # 無駄なスクロールを避ける
+setopt prompt_subst       # プロンプトを毎回評価
 # setopt cdable_vars         # 先頭に "~" を付けたもので展開
 setopt sh_word_split       # 変数内の文字列分解のデリミタ
 setopt magic_equal_subst   # "val=expr" でファイル名展開
 
 unset PS1 # bashのやつクリア
+
+function rprompt-git-current-branch () {
+	local name
+
+	if [[ "$PWD" =~ '/\.git(/.*)?$' ]];then
+		return
+	fi
+	name=`git rev-parse --abbrev-ref=loose HEAD 2> /dev/null`
+	if [[ -z $name ]]; then
+		return
+	fi
+	echo ":$name"
+}
+
+BRANCH='`rprompt-git-current-branch`'
 
 if [[ -n $SSH_CONNECTION ]];then
 	PROMPT_LEFT="%{[31m%}$LOGNAME@$HOSTNAME"
@@ -77,8 +93,9 @@ else
 fi
 
 PROMPT="
-$PROMPT_LEFT %{[33m%}%~%{[m%}
+$PROMPT_LEFT%{[32m%}$BRANCH %{[33m%}%~%{[m%}
 $ "
+
 
 if [[ -d "$HOME/.rbenv" ]]; then
 	eval "$(rbenv init -)"

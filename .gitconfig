@@ -4,6 +4,7 @@
 	b = branch
 	l = log
 	tree = log --graph --pretty=oneline --abbrev-commit --decorate
+	stat = diff --stat
 [color]
 	ui = true
 [branch]
