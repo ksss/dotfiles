@@ -4,6 +4,7 @@ path=(
 	$HOME/bin
 	$HOME/hbin
 	$HOME/perl5/bin
+	$HOME/lib/mruby/bin
 	/opt/local/bin
 	/opt/local/sbin
 	/usr/local/heroku/bin
@@ -18,6 +19,13 @@ path=(
 NODE_PATH=/opt/local/lib/node_modules/
 ANDROID_NDK_ROOT=$HOME/lib/android-ndk-r8e
 ANDROID_SDK_ROOT=$HOME/lib/adt-bundle-mac-x86_64-20130729/sdk
+
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+path+=(
+	$GOROOT/bin
+	$GOPATH/bin
+)
 
 [ -f "$HOME/.bash_profile" ] && source "$HOME/.bash_profile"
 [ -f "$HOME/.zshrc.mine" ] && source "$HOME/.zshrc.mine"

@@ -85,12 +85,14 @@ augroup MyAutocmd
 
 	" filetype変更 phtml -> php
 	au BufRead,BufNewFile *.phtml setlocal filetype=php
+	au BufRead,BufNewFile *.go set filetype=go
 
 	" filetypeごと
 	" au filetype php setlocal tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab
 	au filetype javascript setlocal ts=2 sw=2 expandtab
 	au filetype coffee setlocal ts=2 sw=2 tw=0 expandtab
 	au filetype ruby setlocal ts=2 sw=2 expandtab
+	au filetype c setlocal ts=2 sw=2 expandtab
 
 	" 失敗した時だけechoする
 	function! s:phplint()
@@ -195,12 +197,16 @@ nmap <C-l> :<C-u>call append(expand('.'), '')<CR>
 
 nmap bb :ls<cr>:buffer
 
-" 補完
-inoremap ' ''<LEFT>
-inoremap " ""<LEFT>
-
 " コマンド
 command! Reloadvimrc source ~/.vimrc
 command! -nargs=0 Svndiff echo system(printf("svn diff %s", expand('%')))
 command! -nargs=0 Gitdiff echo system(printf("git diff %s", expand('%')))
 command! -nargs=0 Mysqlexec echo system(printf("\./%s | mysql -u root", expand('%')))
+
+
+" GO
+if $GOROOT != ''
+	set rtp+=$GOROOT/misc/vim
+endif
+exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
+set completeopt=menu,preview
