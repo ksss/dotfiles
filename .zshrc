@@ -19,7 +19,7 @@ path=(
 NODE_PATH=/opt/local/lib/node_modules/
 ANDROID_NDK_ROOT=$HOME/lib/android-ndk-r8e
 ANDROID_SDK_ROOT=$HOME/lib/adt-bundle-mac-x86_64-20130729/sdk
-
+export EDITOR=vim
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 path+=(
