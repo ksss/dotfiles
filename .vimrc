@@ -10,6 +10,14 @@ let php_special_vars = 0
 let php_special_functions = 0
 let php_alt_comparisons = 0
 
+" ctrlp.vim
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+let g:markdown_fenced_languages = [
+\ 'ruby',
+\ 'javascript',
+\]
+
 if &term =~ "xterm-256color" " 256色
 	colorscheme desert256
 	" set t_Co=256
