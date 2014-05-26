@@ -101,7 +101,7 @@ fi
 
 PROMPT="
 $PROMPT_LEFT%{[32m%}$BRANCH %{[33m%}%~%{[m%}
-$ "
+%(?.%{[32m%}.%{[31m%})$%{[m%} "
 
 
 if [[ -d "$HOME/.rbenv" ]]; then
