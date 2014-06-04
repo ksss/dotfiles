@@ -5,6 +5,7 @@ path=(
 	$HOME/hbin
 	$HOME/perl5/bin
 	$HOME/lib/mruby/bin
+	/opt/local/apache2/bin
 	/opt/local/bin
 	/opt/local/sbin
 	/usr/local/heroku/bin
