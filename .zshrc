@@ -4,7 +4,7 @@ path=(
 	$HOME/bin
 	$HOME/hbin
 	$HOME/perl5/bin
-	$HOME/lib/mruby/bin
+	$GOPATH/bin
 	/opt/local/apache2/bin
 	/opt/local/bin
 	/opt/local/sbin
@@ -21,10 +21,6 @@ NODE_PATH=/opt/local/lib/node_modules/
 export EDITOR=vim
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
-path+=(
-	$GOROOT/bin
-	$GOPATH/bin
-)
 
 [ -f "$HOME/.bash_profile" ] && source "$HOME/.bash_profile"
 [ -f "$HOME/.zshrc.mine" ] && source "$HOME/.zshrc.mine"
@@ -46,8 +42,6 @@ alias ...='cd ../../'
 alias vi='vim'
 alias ll='ls -la'
 alias lm='ls -altr'
-alias vgrep='grep -v'
-alias nn='echo \-e "\n\n\n\n\n"'
 alias rm='rm -i'
 
 # typo
@@ -58,6 +52,7 @@ alias dc='cd'
 
 bindkey '^R' history-incremental-pattern-search-backward
 bindkey '^S' history-incremental-pattern-search-forward
+bindkey -e
 
 setopt correct
 setopt share_history       # 履歴を1つに
