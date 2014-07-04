@@ -19,5 +19,6 @@ links ~/dotfiles/.bashrc ~/.bashrc
 links ~/dotfiles/.zshrc ~/.zshrc
 links ~/dotfiles/.gitconfig ~/.gitconfig
 links ~/dotfiles/.gitignore ~/.gitignore
+links ~/dotfiles/.gemrc ~/.gemrc
 links ~/dotfiles/.vim ~/.vim
 links ~/dotfiles/bin ~/bin
