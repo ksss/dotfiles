@@ -1,3 +1,13 @@
+export EDITOR=vim
+export GOROOT=/usr/local/Cellar/go/1.3/libexec
+export GOPATH=$HOME/go
+
+NODE_PATH=/opt/local/lib/node_modules/
+
+[ -f "$HOME/.bash_profile" ] && source "$HOME/.bash_profile"
+[ -f "$HOME/.zshrc.mine" ] && source "$HOME/.zshrc.mine"
+[ -f "$HOME/.zshrc.argumets" ] && source "$HOME/.zshrc.argumets"
+
 path=(
 	$HOME/.rbenv/bin
 	$HOME/.rbenv/shims
@@ -16,15 +26,6 @@ path=(
 	/bin
 	/sbin
 )
-
-NODE_PATH=/opt/local/lib/node_modules/
-export EDITOR=vim
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/go
-
-[ -f "$HOME/.bash_profile" ] && source "$HOME/.bash_profile"
-[ -f "$HOME/.zshrc.mine" ] && source "$HOME/.zshrc.mine"
-[ -f "$HOME/.zshrc.argumets" ] && source "$HOME/.zshrc.argumets"
 
 
 HISTFILE=~/.zsh_history

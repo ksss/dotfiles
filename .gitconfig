@@ -2,9 +2,13 @@
 	s = status
 	c = checkout
 	b = branch
-	l = log
+	l = log --decorate
+	g = grep
+	bm = branch --merged
+	commit = commit -v
 	tree = log --graph --pretty=oneline --abbrev-commit --decorate
 	stat = diff --stat
+	ls-files-exclude-other = ls-files --exclude-standard --others
 [color]
 	ui = true
 [branch]
@@ -14,3 +18,6 @@
 	email = co000ri@gmail.com
 [core]
 	editor = vim
+	whitespace = trailing-space
+[rebase]
+	autosquash = true

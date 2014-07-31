@@ -3,7 +3,7 @@ filetype plugin indent on
 call pathogen#runtime_append_all_bundles() " ~/.vim/bundle 全部読む
 
 " jpTemplateの起動キー
-let g:jpTemplateKey = '<C-B>'
+" let g:jpTemplateKey = '<C-B>'
 
 " php syntax
 let php_special_vars = 0
