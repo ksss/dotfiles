@@ -102,17 +102,7 @@ augroup MyAutocmd
 	au filetype ruby setlocal ts=2 sw=2 expandtab
 	au filetype c setlocal ts=2 sw=2 expandtab
 
-	" 失敗した時だけechoする
-	function! s:phplint()
-		if &filetype == 'php'
-			let ret = system(printf("php -l %s", expand('%')))
-			if ret !~ '^No.*'
-				echo ret
-			endif
-		endif
-	endfunction
-	" PHP保存した時にlint
-	au BufWritePost * call s:phplint()
+	au BufWritePost *.go Fmt
 
 	" 自動でchmod +x
 	au BufWritePost * if getline(1) =~ "^#!" | exe "silent !chmod +x %" | endif
@@ -132,11 +122,15 @@ command! -nargs=0 Httpdrestart call Httpdrestart()<CR>
 " {{{ セルフ実行
 function! ShebangExecute()
 	exe "silent write"
-	let m = matchlist(getline(1), '#!\(.*\)')
-	if (len(m) > 2)
-		echo system(printf('%s %s', m[1], expand('%')))
+	if &filetype == 'go'
+		execute '! go run %'
 	else
-		execute '!' . &ft ' %'
+		let m = matchlist(getline(1), '#!\(.*\)')
+		if (len(m) > 2)
+			echo system(printf('%s %s', m[1], expand('%')))
+		else
+			execute '!' . &ft ' %'
+		endif
 	endif
 endfunction
 nmap ,e :call ShebangExecute()<CR>
@@ -186,16 +180,6 @@ if exists("+showtabline")
 endif
 " }}}
 
-" {{{ OpenAppModels
-function! OpenAppModels()
-	let m = expand('<cword>')
-	if matchstr(m, '^App') != ""
-		execute ':tabedit ' . $models . '/' . substitute(m, '_', '/', 'g') . '.php'
-	endif
-endfunction
-command! -nargs=0 OpenAppModels call OpenAppModels()
-"}}}
-
 " ノーマルモードマップ
 " ESCの2回押しでハイライト消去
 nmap <ESC><ESC> :nohlsearch<CR><ESC>
@@ -218,3 +202,4 @@ if $GOROOT != ''
 endif
 exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
 set completeopt=menu,preview
+

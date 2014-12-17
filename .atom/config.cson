@@ -1,0 +1,22 @@
+'global':
+  'editor':
+    'softWrap': true
+    'softWrapAtPreferredLineLength': true
+    'preferredLineLength': 120
+    'fontFamily': 'Ricty'
+    'invisibles':
+      'tab': '>...'
+    'tabLength': 2
+    'showInvisibles': false
+    'showIndentGuide': false
+    'showLineNumbers': true
+  'whitespace':
+    'ensureSingleTrailingNewline': true
+    'removeTrailingWhitespace': true
+  'exception-reporting':
+    'userId': 'a933c68d-ef7a-10c3-34be-b2ac671e5631'
+  'welcome':
+    'showOnStartup': false
+  'metrics':
+    'userId': '6fda0e809e6ce509b3ebdbd6c19845dc15ba142a'
+  'core': {}

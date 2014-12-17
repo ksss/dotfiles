@@ -1,6 +1,8 @@
 export EDITOR=vim
-export GOROOT=/usr/local/Cellar/go/1.3/libexec
 export GOPATH=$HOME/go
+export GOROOT=/usr/local/opt/go/libexec
+export PGDATA=/usr/local/var/postgres
+export GEMSRC_USE_GHQ=1
 
 NODE_PATH=/opt/local/lib/node_modules/
 
@@ -18,6 +20,7 @@ path=(
 	/opt/local/apache2/bin
 	/opt/local/bin
 	/opt/local/sbin
+	/usr/local/opt/go/libexec/bin
 	/usr/local/heroku/bin
 	/usr/local/mysql/bin
 	/usr/local/bin
