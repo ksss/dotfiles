@@ -19,10 +19,11 @@
 [core]
 	editor = vim
 	whitespace = trailing-space
+	excludesfile = ~/.gitignore
 [rebase]
 	autosquash = true
 [ghq]
-	root = /Users/yuki/ghq
+	root = ~/ghq
 [push]
 	default = simple
 [filter "media"]

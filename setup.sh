@@ -16,7 +16,9 @@ function links () {
 links ~/dotfiles/.vimrc ~/.vimrc
 links ~/dotfiles/.screenrc ~/.screenrc
 links ~/dotfiles/.bashrc ~/.bashrc
+links ~/dotfiles/.zshenv ~/.zshenv
 links ~/dotfiles/.zshrc ~/.zshrc
+links ~/dotfiles/.tigrc ~/.tigrc
 links ~/dotfiles/.gitconfig ~/.gitconfig
 links ~/dotfiles/.gitignore ~/.gitignore
 links ~/dotfiles/.gemrc ~/.gemrc

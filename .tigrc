@@ -1,0 +1,6 @@
+# logフォーマット
+set main-view = id date author commit-title:graph=yes,refs=yes
+
+# Move to `N`ext commit
+bind status N !?git rebase --continue
+bind status C !git commit -v
