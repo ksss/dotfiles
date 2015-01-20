@@ -1,18 +1,11 @@
-'global':
+'*':
   'editor':
+    'fontFamily': 'Ricty'
+    'preferredLineLength': 120
     'softWrap': true
     'softWrapAtPreferredLineLength': true
-    'preferredLineLength': 120
-    'fontFamily': 'Ricty'
     'invisibles':
       'tab': '>...'
-    'tabLength': 2
-    'showInvisibles': false
-    'showIndentGuide': false
-    'showLineNumbers': true
-  'whitespace':
-    'ensureSingleTrailingNewline': true
-    'removeTrailingWhitespace': true
   'exception-reporting':
     'userId': 'a933c68d-ef7a-10c3-34be-b2ac671e5631'
   'welcome':
