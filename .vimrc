@@ -94,7 +94,7 @@ augroup MyAutocmd
 	au filetype ruby setlocal ts=2 sw=2 expandtab
 	au filetype c setlocal ts=2 sw=2 expandtab
 
-	au BufWritePost *.go Fmt
+	au BufWritePost *.go gofmt %
 
 	" 自動でchmod +x
 	au BufWritePost * if getline(1) =~ "^#!" | exe "silent !chmod +x %" | endif
