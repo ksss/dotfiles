@@ -23,7 +23,7 @@
 [rebase]
 	autosquash = true
 [ghq]
-	root = ~/ghq
+	root = ~/src
 [push]
 	default = simple
 [filter "media"]

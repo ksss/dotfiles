@@ -1,5 +1,5 @@
 export EDITOR=vim
-export GOPATH=$HOME/go
+export GOPATH=$HOME
 export GOROOT=/usr/local/opt/go/libexec
 export PGDATA=/usr/local/var/postgres
 export GEMSRC_USE_GHQ=1
