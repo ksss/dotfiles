@@ -2,9 +2,6 @@ syntax on
 filetype plugin indent on
 call pathogen#runtime_append_all_bundles() " ~/.vim/bundle 全部読む
 
-" jpTemplateの起動キー
-" let g:jpTemplateKey = '<C-B>'
-
 " ctrlp.vim
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
