@@ -9,18 +9,14 @@ if [ ! -d ~/.vim-backup/ ]; then
 	mkdir ~/.vim-backup/
 fi
 
-function links () {
-	ln -ivs $1 $2
-}
-
-links ~/dotfiles/.vimrc ~/.vimrc
-links ~/dotfiles/.screenrc ~/.screenrc
-links ~/dotfiles/.bashrc ~/.bashrc
-links ~/dotfiles/.zshenv ~/.zshenv
-links ~/dotfiles/.zshrc ~/.zshrc
-links ~/dotfiles/.tigrc ~/.tigrc
-links ~/dotfiles/.gitconfig ~/.gitconfig
-links ~/dotfiles/.gitignore ~/.gitignore
-links ~/dotfiles/.gemrc ~/.gemrc
-links ~/dotfiles/.vim ~/.vim
-links ~/dotfiles/bin ~/bin
+ln -ivs ~/dotfiles/.vimrc ~/.vimrc
+ln -ivs ~/dotfiles/.screenrc ~/.screenrc
+ln -ivs ~/dotfiles/.bashrc ~/.bashrc
+ln -ivs ~/dotfiles/.zshenv ~/.zshenv
+ln -ivs ~/dotfiles/.zshrc ~/.zshrc
+ln -ivs ~/dotfiles/.tigrc ~/.tigrc
+ln -ivs ~/dotfiles/.gitconfig ~/.gitconfig
+ln -ivs ~/dotfiles/.gitignore ~/.gitignore
+ln -ivs ~/dotfiles/.gemrc ~/.gemrc
+ln -ivs ~/dotfiles/.vim ~/.vim
+ln -ivs ~/dotfiles/bin ~/bin
