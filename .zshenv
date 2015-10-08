@@ -1,13 +1,13 @@
 export EDITOR=vim
 export GOPATH=$HOME
-export GOROOT=/usr/local/opt/go/libexec
 export PGDATA=/usr/local/var/postgres
 export GEMSRC_USE_GHQ=1
+export AWS_REGION=ap-northeast-1
 
 path=(
+	$HOME/bin
 	$HOME/.rbenv/bin
 	$HOME/.rbenv/shims
-	$HOME/bin
 	$HOME/hbin
 	$HOME/perl5/bin
 	$GOPATH/bin
