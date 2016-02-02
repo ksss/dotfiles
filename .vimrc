@@ -36,6 +36,11 @@ if has('gui_running')  " guiなら
 else                   " cuiなら
 endif
 
+" カレントからtagsを上のディレクトリを辿って検索する';'がポイント
+if has("path_extra")
+	set tags+=tags;
+endif
+
 set nocompatible                 " vi互換モードoff(最初にやる)
 set termencoding=utf-8
 set encoding=utf-8

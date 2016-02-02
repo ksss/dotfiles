@@ -6,7 +6,7 @@ NODE_PATH=/opt/local/lib/node_modules/
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
-SAVEHIST=1000000
+SAVEHIST=10000
 
 typeset -U fpath
 fpath=($fpath $HOME/.zsh)
@@ -71,6 +71,12 @@ zstyle ':completion:*' completer _oldlist _complete _match _ignored _approximate
 zstyle ':completion:*' use-cache yes
 ## 詳細な情報を使う。
 zstyle ':completion:*' verbose yes
+
+zstyle ':completion:*:descriptions' format '%B%d%b'
+zstyle ':completion:*:messages' format '%d'
+zstyle ':completion:*:warnings' format 'No matches for: %d'
+zstyle ':completion:*' group-name ''
+
 ## カーソル位置で補完する。
 setopt complete_in_word
 
