@@ -40,7 +40,7 @@ setopt auto_remove_slash   # 接尾語を削除
 setopt auto_param_keys     # 変数名補完
 setopt hist_ignore_space   # 先頭のスペース無視
 setopt pushd_ignore_dups  # 重複するディレクトリを無視
-setopt extended_glob       # "#", "~", "^" を正規表現として扱う
+# setopt extended_glob       # "#", "~", "^" を正規表現として扱う
 setopt list_types          # ファイル種別を表す記号を末尾に表示
 setopt no_beep             # ベルを鳴らさない
 setopt always_last_prompt  # 無駄なスクロールを避ける
