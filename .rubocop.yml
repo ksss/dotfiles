@@ -36,6 +36,12 @@ Style/NegatedIf:
 Style/Next:
     Enabled: false
 
+Style/NilComparison:
+    Enabled: false
+
+Style/NonNilCheck:
+    Enabled: false
+
 Style/StringLiterals:
     EnforcedStyle: double_quotes
 
