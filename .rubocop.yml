@@ -3,57 +3,76 @@ AllCops:
     DisplayStyleGuide: true
     TargetRubyVersion: 2.3
 
+# 日本語でコメント書くこともある
 Style/AsciiComments:
     Enabled: false
 
+# chainするなら{...}しないならdo...end
 Style/BlockDelimiters:
     EnforcedStyle: braces_for_chaining
 
+# インデント調整
 Style/CaseIndentation:
     IndentWhenRelativeTo: end
 
+# kind_of?でもis_a?でもどっちでもいい
 Style/ClassCheck:
     Enabled: false
 
+# コメントをインデントずらしたい時もある
 Style/CommentIndentation:
     Enabled: false
 
+# わざと空elseにすることで
+# このパターン忘れてるわけではないですよアピールをすることもある
 Style/EmptyElse:
     Enabled: false
 
+# ありえないぐらい邪魔
 Style/FrozenStringLiteralComment:
     Enabled: false
 
+# ifかunlessかは場合によって選びたい
 Style/IfUnlessModifier:
     Enabled: false
 
+# constをクラス変数のように使うこともある
 Style/MutableConstant:
     Enabled: false
 
+# if!とunlessは別物
 Style/NegatedIf:
     Enabled: false
 
+# 意味が変わってしまうときがあるのでバグがある気がする
 Style/Next:
     Enabled: false
 
+# if a == nilとしたいときもある
 Style/NilComparison:
     Enabled: false
 
+# if err != nilって書きたい時もある
 Style/NonNilCheck:
     Enabled: false
 
+# ダブルのほうが後で埋め込みを追加しやすい
 Style/StringLiterals:
     EnforcedStyle: double_quotes
 
+# rescue Exceptionしたいときもある
 Style/SignalException:
     Enabled: false
 
+# blockで書きたい時もある
 Style/SymbolProc:
     Enabled: false
 
+# gofmtっぽくしたい
 Style/TrailingCommaInArguments:
     EnforcedStyleForMultiline: comma
 
+# gofmtっぽくしたい
 Style/TrailingCommaInLiteral:
     EnforcedStyleForMultiline: comma
 
