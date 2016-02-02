@@ -1,0 +1,64 @@
+AllCops:
+    DisplayCopNames: true
+    DisplayStyleGuide: true
+    TargetRubyVersion: 2.3
+
+Style/AsciiComments:
+    Enabled: false
+
+Style/BlockDelimiters:
+    EnforcedStyle: braces_for_chaining
+
+Style/CaseIndentation:
+    IndentWhenRelativeTo: end
+
+Style/ClassCheck:
+    Enabled: false
+
+Style/CommentIndentation:
+    Enabled: false
+
+Style/EmptyElse:
+    Enabled: false
+
+Style/FrozenStringLiteralComment:
+    Enabled: false
+
+Style/IfUnlessModifier:
+    Enabled: false
+
+Style/MutableConstant:
+    Enabled: false
+
+Style/NegatedIf:
+    Enabled: false
+
+Style/Next:
+    Enabled: false
+
+Style/StringLiterals:
+    EnforcedStyle: double_quotes
+
+Style/SignalException:
+    Enabled: false
+
+Style/SymbolProc:
+    Enabled: false
+
+Style/TrailingCommaInArguments:
+    EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInLiteral:
+    EnforcedStyleForMultiline: comma
+
+Metrics/LineLength:
+    Max: 120
+
+Lint/AssignmentInCondition:
+    Enabled: false
+
+Lint/EndAlignment:
+    AlignWith: variable
+
+Lint/HandleExceptions:
+    Enable: false

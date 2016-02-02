@@ -20,3 +20,4 @@ ln -ivs ~/dotfiles/.gitignore ~/.gitignore
 ln -ivs ~/dotfiles/.gemrc ~/.gemrc
 ln -ivs ~/dotfiles/.vim ~/.vim
 ln -ivs ~/dotfiles/bin ~/bin
+ln -ivs ~/dotfiles/.rubocop.yml ~/.rubocop.yml
