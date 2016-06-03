@@ -117,6 +117,13 @@ PROMPT="
 $PROMPT_LEFT%{[32m%}$BRANCH %{[33m%}%~%{[m%}
 %(?.%{[32m%}.%{[31m%})$%{[m%} "
 
+function t () {
+	local n
+	n=$(basename $(pwd))
+	echo -ne "\033]0;${n}\007"
+	echo ${n}
+}
+
 export GREP_OPTIONS
 ### バイナリファイルにはマッチさせない。
 GREP_OPTIONS="--exclude-dir=.git --color=auto --binary-files=without-match"
