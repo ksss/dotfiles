@@ -1,6 +1,9 @@
 # logフォーマット
 set main-view = id date author commit-title:graph=yes,refs=yes
 
+# blame view の行数表示をON、intervalを1に
+set blame-view = date:default author:abbreviated id:yes,color line-number:yes,interval=1 text
+
 # Move to `N`ext commit
 bind status N !git rebase --continue
 bind status C !git commit -v

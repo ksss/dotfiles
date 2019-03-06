@@ -9,15 +9,19 @@ if [ ! -d ~/.vim-backup/ ]; then
 	mkdir ~/.vim-backup/
 fi
 
-ln -ivs ~/dotfiles/.vimrc ~/.vimrc
-ln -ivs ~/dotfiles/.screenrc ~/.screenrc
-ln -ivs ~/dotfiles/.bashrc ~/.bashrc
-ln -ivs ~/dotfiles/.zshenv ~/.zshenv
-ln -ivs ~/dotfiles/.zshrc ~/.zshrc
-ln -ivs ~/dotfiles/.tigrc ~/.tigrc
-ln -ivs ~/dotfiles/.gitconfig ~/.gitconfig
-ln -ivs ~/dotfiles/.gitignore ~/.gitignore
-ln -ivs ~/dotfiles/.gemrc ~/.gemrc
-ln -ivs ~/dotfiles/.vim ~/.vim
-ln -ivs ~/dotfiles/bin ~/bin
-ln -ivs ~/dotfiles/.rubocop.yml ~/.rubocop.yml
+function lnivs () {
+	diff -u $2 $1
+	ln -ivs $1 $2
+}
+lnivs ~/dotfiles/.vimrc ~/.vimrc
+lnivs ~/dotfiles/.screenrc ~/.screenrc
+lnivs ~/dotfiles/.bashrc ~/.bashrc
+lnivs ~/dotfiles/.zshenv ~/.zshenv
+lnivs ~/dotfiles/.zshrc ~/.zshrc
+lnivs ~/dotfiles/.tigrc ~/.tigrc
+lnivs ~/dotfiles/.gitconfig ~/.gitconfig
+lnivs ~/dotfiles/.gitignore ~/.gitignore
+lnivs ~/dotfiles/.gemrc ~/.gemrc
+lnivs ~/dotfiles/.vim ~/.vim
+lnivs ~/dotfiles/bin ~/bin
+lnivs ~/dotfiles/.rubocop.yml ~/.rubocop.yml

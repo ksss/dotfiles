@@ -1,11 +1,4 @@
 [alias]
-	s = status
-	c = checkout
-	b = branch
-	l = log --decorate
-	g = grep
-	bm = branch --merged
-	commit = commit -v
 	tree = log --graph --pretty=oneline --abbrev-commit --decorate
 	stat = diff --stat
 	ls-files-exclude-other = ls-files --exclude-standard --others
@@ -21,7 +14,6 @@
 	whitespace = trailing-space
 	excludesfile = ~/.gitignore
 [rebase]
-	autosquash = true
 	autostash = true
 [ghq]
 	root = ~/src
@@ -31,3 +23,17 @@
 	required = true
 	clean = git media clean %f
 	smudge = git media smudge %f
+[github]
+	user = ksss
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg
+[diff]
+	compactionHeuristic = true
+[pager]
+	log = diff-highlight | less
+	show = diff-highlight | less
+	diff = diff-highlight | less
+[interactive]
+	diffFilter = diff-highlight

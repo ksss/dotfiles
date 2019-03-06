@@ -25,7 +25,7 @@ Style/BracesAroundHashParameters:
 
 # インデント調整
 Style/CaseIndentation:
-    IndentWhenRelativeTo: end
+    EnforcedStyle: end
 
 # kind_of?でもis_a?でもどっちでもいい
 Style/ClassCheck:
@@ -58,6 +58,9 @@ Style/IndentArray:
 Style/IndentHash:
     EnforcedStyle: consistent
 
+Style/LambdaCall:
+    Enabled: false
+
 # constをクラス変数のように使うこともある
 Style/MutableConstant:
     Enabled: false
@@ -76,6 +79,9 @@ Style/NilComparison:
 
 # if err != nilって書きたい時もある
 Style/NonNilCheck:
+    Enabled: false
+
+Style/Proc:
     Enabled: false
 
 # すきにしたらいい
@@ -105,4 +111,4 @@ Lint/AssignmentInCondition:
     Enabled: false
 
 Lint/EndAlignment:
-    AlignWith: variable
+    EnforcedStyleAlignWith: variable

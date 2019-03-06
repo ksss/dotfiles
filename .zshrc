@@ -6,35 +6,24 @@ NODE_PATH=/opt/local/lib/node_modules/
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
-SAVEHIST=10000
+SAVEHIST=100000
 
 typeset -U fpath
-fpath=($fpath $HOME/.zsh)
+fpath=($fpath $HOME/.zsh/functions)
 
 autoload -U compinit
 compinit
-
-alias ..='cd ..'
-alias ...='cd ../../'
-alias vi='vim'
-alias ll='ls -la'
-alias lm='ls -altr'
-alias rm='rm -i'
-
-# typo
-alias ks='ls'
-alias sl='ls'
-alias l='ls'
-alias dc='cd'
 
 bindkey '^R' history-incremental-pattern-search-backward
 bindkey '^S' history-incremental-pattern-search-forward
 bindkey -e
 
 setopt correct
+setopt extended_history
 setopt share_history       # 履歴を1つに
 setopt hist_ignore_dups    # ヒストリー重複無視
-setopt auto_pushd          # 
+setopt hist_no_store       # historyコマンドを無視
+setopt auto_pushd          #
 setopt print_eight_bit     #  日本語対応
 setopt auto_remove_slash   # 接尾語を削除
 setopt auto_param_keys     # 変数名補完
@@ -52,12 +41,10 @@ setopt magic_equal_subst   # "val=expr" でファイル名展開
 ## 補完候補に色を付ける。
 ### "": 空文字列はデフォルト値を使うという意味。
 zstyle ':completion:*:default' list-colors ""
-
 ## 補完候補がなければより曖昧に候補を探す。
 ### m:{a-z}={A-Z}: 小文字を大文字に変えたものでも補完する。
 ### r:|[._-]=*: 「.」「_」「-」の前にワイルドカード「*」があるものとして補完する。
 zstyle ':completion:*' matcher-list 'r:|[._-]=*'
-
 ## 補完方法の設定。指定した順番に実行する。
 ### _oldlist 前回の補完結果を再利用する。
 ### _complete: 補完する。
@@ -93,28 +80,24 @@ WORDCHARS=${WORDCHARS:s,/,,}
 unset PS1 # bashのやつクリア
 
 function rprompt-git-current-branch () {
-	local name
+	local branch
+	local short
 
 	if [[ "$PWD" =~ '/\.git(/.*)?$' ]];then
 		return
 	fi
-	name=`git rev-parse --abbrev-ref=loose HEAD 2> /dev/null`
-	if [[ -z $name ]]; then
+	branch=`git rev-parse --abbrev-ref=loose HEAD 2> /dev/null`
+	if [[ -z $branch ]]; then
 		return
 	fi
-	echo ":$name"
+	short=`git rev-parse --short HEAD 2> /dev/null`
+	echo $branch\[$short]' '
 }
 
 BRANCH='`rprompt-git-current-branch`'
 
-if [[ -n $SSH_CONNECTION ]];then
-	PROMPT_LEFT="%{[31m%}$LOGNAME@$HOSTNAME"
-else
-	PROMPT_LEFT="%{[32m%}$USER"
-fi
-
 PROMPT="
-$PROMPT_LEFT%{[32m%}$BRANCH %{[33m%}%~%{[m%}
+%{[32m%}$BRANCH%{[33m%}%~%{[m%}
 %(?.%{[32m%}.%{[31m%})$%{[m%} "
 
 function t () {
