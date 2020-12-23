@@ -16,7 +16,7 @@ function lnivs () {
 lnivs ~/dotfiles/.vimrc ~/.vimrc
 lnivs ~/dotfiles/.screenrc ~/.screenrc
 lnivs ~/dotfiles/.bashrc ~/.bashrc
-lnivs ~/dotfiles/.zshenv ~/.zshenv
+lnivs ~/dotfiles/.zprofile ~/.zprofile
 lnivs ~/dotfiles/.zshrc ~/.zshrc
 lnivs ~/dotfiles/.tigrc ~/.tigrc
 lnivs ~/dotfiles/.gitconfig ~/.gitconfig

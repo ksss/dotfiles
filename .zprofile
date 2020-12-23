@@ -5,14 +5,14 @@ export GEMSRC_USE_GHQ=1
 export AWS_REGION=ap-northeast-1
 export NVM_DIR=$HOME/.nvm
 export GITHUB=$HOME/src/github.com
+export GPG_TTY=$(tty)
 
 path=(
 	$HOME/bin
 	$HOME/.rbenv/bin
 	$HOME/.rbenv/shims
-	$HOME/hbin
-	$HOME/perl5/bin
 	$GOPATH/bin
+	/opt/homebrew/bin
 	/opt/local/apache2/bin
 	/opt/local/bin
 	/opt/local/sbin

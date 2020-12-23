@@ -9,6 +9,7 @@
 [user]
 	name = ksss
 	email = co000ri@gmail.com
+	signingkey = 3BDED9B981BE5BC2
 [core]
 	editor = vim
 	whitespace = trailing-space
