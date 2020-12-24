@@ -1,0 +1,2 @@
+#! /bin/sh
+cd $(ghq list --full-path | peco --on-cancel=error || pwd)
