@@ -1,0 +1,64 @@
+#! /usr/bin/env ruby
+
+require 'json'
+require 'pp'
+require 'optparse'
+
+Option = Struct.new(
+  :symbolize
+)
+o = Option.new(
+  false
+)
+
+OptionParser.new.tap do |opt|
+  opt.on('-s', '--symbolize') do |arg|
+    o.symbolize = arg
+  end
+end.parse!(ARGV)
+
+class Array
+  def pretty_print(q)
+    q.group_sub {
+      q.nest(2) {
+        q.text '['
+        q.breakable ''
+        q.seplist(self) {|v|
+          q.pp v
+        }
+      }
+    }
+    q.breakable ''
+    q.text ']'
+  end
+end
+
+class Hash
+  def pretty_print(q)
+    q.group_sub {
+      q.nest(2) {
+      q.text '{'
+      q.breakable ''
+        q.seplist(self, nil, :each_pair) do |k, v|
+          q.group do
+            if k.instance_of?(Symbol)
+              q.text k.to_s
+              q.text ': '
+            else
+              q.pp k
+              q.text ' => '
+            end
+            q.group(0) {
+              q.pp v
+            }
+          end
+        end
+      }
+    }
+    q.breakable ''
+    q.text '}'
+  end
+end
+
+puts JSON.parse($stdin.read, symbolize_names: o.symbolize).pretty_inspect
+
