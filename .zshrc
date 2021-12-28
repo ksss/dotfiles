@@ -107,6 +107,10 @@ function t () {
 	echo ${n}
 }
 
+function cdsrc () {
+	cd $(ghq list --full-path | peco --on-cancel=error || pwd)
+}
+
 export GREP_OPTIONS
 ### バイナリファイルにはマッチさせない。
 GREP_OPTIONS="--exclude-dir=.git --color=auto --binary-files=without-match"
