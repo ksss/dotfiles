@@ -1,6 +1,7 @@
 .netrwhist
 .DS_Store
-tags
+/tags
 .bundle
 out.png
 .crystal
+.vscode

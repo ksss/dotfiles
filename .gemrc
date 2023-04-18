@@ -1,3 +1,1 @@
 gemsrc_use_ghq: 1
-install: --no-rdoc --no-ri
-update: --no-rdoc --no-ri

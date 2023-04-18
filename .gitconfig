@@ -28,6 +28,8 @@
 	user = ksss
 [commit]
 	gpgsign = true
+[tag]
+	gpgsign = true
 [gpg]
 	program = gpg
 [diff]
@@ -38,3 +40,5 @@
 	diff = diff-highlight | less
 [interactive]
 	diffFilter = diff-highlight
+[init]
+	defaultBranch = main

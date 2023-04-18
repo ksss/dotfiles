@@ -24,4 +24,3 @@ lnivs ~/dotfiles/.gitignore ~/.gitignore
 lnivs ~/dotfiles/.gemrc ~/.gemrc
 lnivs ~/dotfiles/.vim ~/.vim
 lnivs ~/dotfiles/bin ~/bin
-lnivs ~/dotfiles/.rubocop.yml ~/.rubocop.yml
