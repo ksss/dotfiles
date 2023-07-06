@@ -1,1 +1,26 @@
-curl -L http://github.com/ksss/dotfiles/raw/master/setup.sh | sh
+### Install Homebrew and tool chain
+
+https://brew.sh/
+
+```shell
+$ brew install git gpg pinentry-mac gh ghq peco tig rbenv ruby-build
+```
+
+### Generate SSH key
+
+https://docs.github.com/ja/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+
+### Generate GPG key
+
+```
+$ GPG_TTY=$(tty)
+$ export GPG_TTY
+```
+
+https://docs.github.com/ja/authentication/managing-commit-signature-verification/generating-a-new-gpg-key
+
+### Generate link
+
+```shell
+$ curl -L http://github.com/ksss/dotfiles/raw/master/setup.sh | sh
+```
